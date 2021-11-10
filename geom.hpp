@@ -34,27 +34,33 @@ struct Line {
     Line(double A = 0, double B = 0, double C = 0) : A(A), B(B), C(C) {}
 
     Line(const Point& p1, const Point& p2) {
-        double k = (p2.y-p1.y)/(p2.x-p1.x);
-        double n = p1.y-k*p1.x;
-        this->A = k;
-        this->B = 1;
-        this->C = n;
+        this->A = (p2.y-p1.y)/(p2.x-p1.x);
+        this->C = p1.y-this->A*p1.x;
+        this->B =-1;
     }
 
     bool parallel(const Line& other) {
-        return (this->A/other.A == this->B/other.B) && (this->A/other.A != this->C/other.C) ;
+        if ((this->A/other.A == this->B/other.B) && (this->A/other.A != this->C/other.C)){
+            return true;
+        }
+        return false;;
     }
 
     Line parallel(const Point& p) {
-        return Line(0,0,0);
+        double c = this->A*p.x + this->B*p.y;
+        return Line(this->A,this->B,c);
     }
 
     bool perpendicular(const Line& other) const {
-        return true;
+        if(-(this->B/this->A) == other.B/other.A){
+            return true;
+        }
+        return false;
     }
 
     Line perpendicular(const Point& p) {
-        return Line(0,0,0);
+        double c = +this->B*p.x-this->A*p.y;
+        return Line(-this->B,this->A,c);
     }
 
     void print(ostream& out) const {
