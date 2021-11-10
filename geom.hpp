@@ -40,6 +40,18 @@ struct Line {
     }
 
     bool parallel(const Line& other) {
+        if(other.A == 0){
+            if(this->A == 0){
+                return true;
+            }
+            return false;
+        }
+        if(other.B == 0){
+            if(this->B == 0){
+                return true;
+            }
+            return false;
+        }
         if ((this->A/other.A == this->B/other.B) && (this->A/other.A != this->C/other.C)){
             return true;
         }
@@ -52,7 +64,7 @@ struct Line {
     }
 
     bool perpendicular(const Line& other) const {
-        if(-(this->A/this->B) == other.B/other.A){
+        if((this->A/this->B) == (-(other.B/other.A))){
             return true;
         }
         return false;
