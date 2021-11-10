@@ -41,8 +41,8 @@ struct Line {
         this->C = n;
     }
 
-    bool parallel(const Line& other) const {
-        return true;
+    bool parallel(const Line& other) {
+        return (this->A/other.A == this->B/other.B) && (this->A/other.A != this->C/other.C) ;
     }
 
     Line parallel(const Point& p) {
