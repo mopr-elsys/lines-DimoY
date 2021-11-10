@@ -47,12 +47,12 @@ struct Line {
     }
 
     Line parallel(const Point& p) {
-        double c = this->A*p.x + this->B*p.y;
+        double c = -this->A*p.x - this->B*p.y;
         return Line(this->A,this->B,c);
     }
 
     bool perpendicular(const Line& other) const {
-        if(-(this->B/this->A) == other.B/other.A){
+        if(-(this->A/this->B) == other.B/other.A){
             return true;
         }
         return false;
