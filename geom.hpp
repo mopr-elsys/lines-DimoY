@@ -64,6 +64,18 @@ struct Line {
     }
 
     bool perpendicular(const Line& other) const {
+        if(other.A == 0){
+            if(this->B == 0){
+                return true;
+            }
+            return false;
+        }
+        if(other.B == 0){
+            if(this->A == 0){
+                return true;
+            }
+            return false;
+        }
         if((this->A/this->B) == (-(other.B/other.A))){
             return true;
         }
