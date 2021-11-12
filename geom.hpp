@@ -37,6 +37,9 @@ struct Line {
         this->A =-p2.y+p1.y;
         this->B = p2.x-p1.x;
         this->C = -this->A*p1.x+this->B*p1.y;
+        if(this->C == 0){
+            this->C == -0;
+        }
     }
 
     bool parallel(const Line& other) {
