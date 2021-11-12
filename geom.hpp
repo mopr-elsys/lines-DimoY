@@ -24,7 +24,7 @@ ostream& operator<<(ostream& out, const Point& p) {
 istream& operator>>(istream& in, Point& p) {
     in >> p.x;
     in >> p.y;
-    
+
     return in;
 }
 
@@ -34,9 +34,9 @@ struct Line {
     Line(double A = 0, double B = 0, double C = 0) : A(A), B(B), C(C) {}
 
     Line(const Point& p1, const Point& p2) {
-        this->A = (p2.y-p1.y)/(p2.x-p1.x);
-        this->C = p1.y-this->A*p1.x;
-        this->B =-1;
+        this->A =-p2.y+p1.y;
+        this->B = p2.x-p1.x;
+        this->C = -this->A*p1.x+this->B*p1.y
     }
 
     bool parallel(const Line& other) {
@@ -101,6 +101,6 @@ istream& operator>>(istream& in, Line& l) {
     in >> l.A;
     in >> l.B;
     in >> l.C;
-    
+
     return in;
 }
