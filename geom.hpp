@@ -38,7 +38,7 @@ struct Line {
         this->B = p2.x-p1.x;
         this->C = -this->A*p1.x+this->B*p1.y;
         if(this->C == 0){
-            this->C == -this.C;
+            this->C == -this->C;
         }
     }
 
