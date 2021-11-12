@@ -36,10 +36,7 @@ struct Line {
     Line(const Point& p1, const Point& p2) {
         this->A =-p2.y+p1.y;
         this->B = p2.x-p1.x;
-        this->C = -this->A*p1.x+this->B*p1.y;
-        if(this->C == 0){
-            this->C == -this->C;
-        }
+        this->C = this->B*p1.y-this->A*p1.x;
     }
 
     bool parallel(const Line& other) {
@@ -91,6 +88,9 @@ struct Line {
     }
 
     void print(ostream& out) const {
+        if(this->C == 0){
+           out<< A << "x + "<< B<< "y + -"<< C<< " = 0";
+        }
         out<< A << "x + "<< B<< "y + "<< C<< " = 0";
     }
 };
